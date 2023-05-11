@@ -14,60 +14,40 @@ class ViewController: UIViewController {
     var resultNum:Int = 0
     var digitNum:Int = 1
     var flag:String = "null"
+    var countNum:Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         displayLavel.text = String(tempNumber)
     }
-    func addNum(addNumber:String){
+    func addNum(addNumber:Int){
         digitNum += 1
         if digitNum <= 7{
-            tempNumber = tempNumber + addNumber
+            tempNumber = tempNumber + String(addNumber)
             displayLavel.text = String(tempNumber)
         }else{
             alert(titleText: "エラー", messageText: "デモ版のためこれ以上入力できません")
         }
     }
-    @IBAction func button1(){
-        addNum(addNumber: "1")
-    }
-    @IBAction func button2(){
-        addNum(addNumber: "2")
-    }
-    @IBAction func button3(){
-        addNum(addNumber: "3")
-    }
-    @IBAction func button4(){
-        addNum(addNumber: "4")
-    }
-    @IBAction func button5(){
-        addNum(addNumber: "5")
-    }
-    @IBAction func button6(){
-        addNum(addNumber: "6")
-    }
-    @IBAction func button7(){
-        addNum(addNumber: "7")
-    }
-    @IBAction func button8(){
-        addNum(addNumber: "8")
-    }
-    @IBAction func button9(){
-        addNum(addNumber: "9")
-    }
-    @IBAction func button0(){
-        addNum(addNumber: "0")
+    @IBAction func button1(sender: UIButton){
+        addNum(addNumber: sender.tag)
     }
     @IBAction func reset(){
         tempNumber = "0"
+        flag = "null"
         digitNum = 1
         displayLavel.text = String(tempNumber)
     }
     @IBAction func result(){
-//        switch flag {
-//        case "null":
-//            alert(titleText: "エラー", messageText: "デモ版のためこれ以上入力できません")
-//        }
+        switch flag {
+        case "null":
+            alert(titleText: "エラー", messageText: "文字を入れてください")
+        default:
+            print("test")
+        }
+    }
+    @IBAction func plus(){
+        
     }
     func alert(titleText:String,messageText:String){
         let alert = UIAlertController(title: titleText, message: messageText, preferredStyle: .alert)
